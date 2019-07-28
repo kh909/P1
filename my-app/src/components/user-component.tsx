@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import RevLogo from '../assets/rev-logo.png';
 import Axios from 'axios';
 import NavComponent from './nav-component';
 interface User {
@@ -38,10 +36,7 @@ export class UserComponent extends React.Component<any, User>{
     }
 
     searchUser() {
-        
-        console.log(localStorage)
 
-        console.log(localStorage.getItem("token"))
         const url = `http://localhost:3001/users/${this.state.inputValue}`;
 
         //the headers with the key
@@ -51,6 +46,7 @@ export class UserComponent extends React.Component<any, User>{
                 'Content-Type' : 'application/json'
             }
         }
+        
         Axios.get(url, config).then(payload => {
             console.log(payload)
             console.log(payload.data.userId)
@@ -61,13 +57,10 @@ export class UserComponent extends React.Component<any, User>{
                 first_name: payload.data[0].first_name,
                 last_name: payload.data[0].last_name,
                 email: payload.data[0].email,
-                role: payload.data[0].role,
-                
+                role: payload.data[0].role, 
             })
             console.log(this.state)
-            
         });
-
     }
 
         render() {

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import RevLogo from '../assets/rev-logo.png';
-import Axios from 'axios';
 import api from '../util/api';
 
 // export class LoginComponent extends React.Component<{}, IState>{
@@ -17,24 +16,30 @@ export class LoginComponent extends React.Component <any,any>{
 
     //submit button is pressed
    async handleSubmit(e: any) {
-
+    try{
         let user= await api.post('/login',{
             username: this.state.username,
             password: this.state.password
             
         });
+
         const token = user.data.token
 
         console.log(token)
         console.log(user.data)
         //if the credentials are valid go to /users
 
-        if (user.data.sucess === true) {
+        
+        if (user.data.sucess) {
             //stores token in localstorage
             localStorage.setItem("token",token)
             //takes user to user page
             this.props.history.replace("/main");
         } 
+    }
+    catch {
+        alert("Invalid Credentials")
+    }
       //  console.log(this.state)
     }
 

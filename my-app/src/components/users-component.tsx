@@ -1,11 +1,6 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import RevLogo from '../assets/rev-logo.png';
-import Axios from 'axios';
 import NavComponent from './nav-component';
 import api from '../util/api';
-import { object } from 'prop-types';
-
 
 export class UsersComponent extends React.Component<any, any>{
     constructor(props: any) {
@@ -15,10 +10,11 @@ export class UsersComponent extends React.Component<any, any>{
             users:[]
         };
     }
-
-
+    
     
     async getUsers() {
+
+        try{
         //the headers with the key
         const config = {
             headers: {
@@ -32,11 +28,13 @@ export class UsersComponent extends React.Component<any, any>{
         this.setState({
             users : allUsers.data
         })
-
+        //catch if wrong user try to access
+    } catch {
+        alert("You are not authorized for this operation")
     }
 
+    }
         render() {
-
             const userRows = this.state.users.map((user: any)=>(
                 <tr key={user.userid}>
                     {Object.values(user).map((prop: any)=>(
@@ -57,9 +55,11 @@ export class UsersComponent extends React.Component<any, any>{
                 <button onClick={()=>this.getUsers()}>
                 Display Users
                 </button>
-                <h2></h2>
+                <div>
+
+                </div>
                     <table>
-                        <tbody>
+                        <tbody className="user">
                             {userRows}
                         </tbody>
                     </table>     
