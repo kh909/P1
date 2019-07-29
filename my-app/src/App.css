@@ -9,9 +9,21 @@
 }
 .reimbursements {
   text-align: center;
+  
 }
 .users {
   text-align: center;
+}
+.user-box {
+  width: 300px;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+#person-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .App-logo {

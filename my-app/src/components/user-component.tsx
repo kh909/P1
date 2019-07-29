@@ -16,6 +16,7 @@ export class UserComponent extends React.Component<any, User>{
     constructor(props: any) {
         super(props);
         
+        //sets the state to
         this.state = {
             userid: '',
             username: '',
@@ -27,6 +28,7 @@ export class UserComponent extends React.Component<any, User>{
         };
     }
 
+    //sets the input from the input field
     handleUserID(e: any) {
         const value = e.target.value;
         this.setState({

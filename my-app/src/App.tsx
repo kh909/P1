@@ -22,7 +22,7 @@ const App: React.FC = () => {
           <Route path="/users" component= {UsersComponent} />
           <Route path="/main" component = {MainComponent} />
           <Route path="/reimbursements/status" component={ReimbursementStatusComponent} />
-          <Route path="/reimbursements/author" component={ReimbursementIDComponent} />
+          <Route path="/reimbursements/author/userid/" component={ReimbursementIDComponent} />
           <Route path="/reimbursements/submit" component={ReimbursementSubmitComponent} />
           <Route path="/reimbursements/update" component={ReimbursementUpdateComponent} />
           <Route component={LoginComponent} />

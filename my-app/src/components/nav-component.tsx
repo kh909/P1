@@ -29,8 +29,8 @@ const NavComponent: React.FC = () => {
                         <li className="nav-item active dropdown">
                             <div className="nav-link dropdown-toggle pointer" id="examples-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reimbursements</div>
                             <div className="dropdown-menu" aria-labelledby="examples-dropdown">
-                                <div className="dropdown-item"><Link to="/reimbursements/status" className="unset-anchor nav-link active">Reimbursement Status</Link></div>
-                                <div className="dropdown-item"><Link to="/reimbursements/author" className="unset-anchor nav-link active">Find Reimbursement</Link></div>
+                                <div className="dropdown-item"><Link to="/reimbursements/status" className="unset-anchor nav-link active">Find Reimbursement By Status</Link></div>
+                                <div className="dropdown-item"><Link to="/reimbursements/author/userid/" className="unset-anchor nav-link active">Find Reimbursement By User</Link></div>
                                 <div className="dropdown-item"><Link to="/reimbursements/submit" className="unset-anchor nav-link active">Submit Reimbursement</Link></div>
                                 <div className="dropdown-item"><Link to="/reimbursements/update" className="unset-anchor nav-link active">Update Reimbursement</Link></div>
                             </div>

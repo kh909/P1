@@ -1,6 +1,7 @@
 import * as React from 'react';
 import NavComponent from './nav-component';
 import api from '../util/api';
+import { PersonComponent } from './all-users-component';
 
 export class UsersComponent extends React.Component<any, any>{
     constructor(props: any) {
@@ -10,7 +11,6 @@ export class UsersComponent extends React.Component<any, any>{
             users:[]
         };
     }
-    
     
     async getUsers() {
 
@@ -35,38 +35,25 @@ export class UsersComponent extends React.Component<any, any>{
 
     }
         render() {
-            const userRows = this.state.users.map((user: any)=>(
-                <tr key={user.userid}>
-                    {Object.values(user).map((prop: any)=>(
-                        <td>{prop}</td>
-                    ))}
-                </tr>
-                )
-            )  
-
-            const userRowNames = this.state.users.map((user: any) => {
-                return (user)
-            })
+            
+            const userComponentList = this.state.users.map((n: any) => {
+                return (<PersonComponent {...n} />)
+            });
+            
             return (
-                <div className="user" >
-                <NavComponent/>
-                <div>
-                        <h5>Display All Users</h5> 
+                <div className="user">
+                <NavComponent/>    
+                <h5>Display All Users</h5> 
                 <button onClick={()=>this.getUsers()}>
+
                 Display Users
                 </button>
-                <div>
-
+                    {userComponentList}
                 </div>
-                    <table>
-                        <tbody className="user">
-                            {userRows}
-                        </tbody>
-                    </table>     
-                </div>
-            </div>    
                 
             );
+
         }
+        
 }
 
