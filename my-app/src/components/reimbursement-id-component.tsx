@@ -35,7 +35,7 @@ export class ReimbursementIDComponent extends React.Component<any, any>{
         this.setState({
             reimbursements : reimbursementID.data
         })
-}
+    }
     
         render() {
 
@@ -54,12 +54,11 @@ export class ReimbursementIDComponent extends React.Component<any, any>{
                                             placeholder="Reimbursement Status ID" 
                                             onChange= {(event) => this.handleReimbursementID(event)}>
                                     </input>
-                                </div> 
+                            </div> 
                                 <button onClick={() => this.searchReimbursement()}>Submit</button>
                     </form>   
                     {reimbursementComponentList}
                 </div>
-                
             );
         }
 }

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Axios from 'axios';
 import NavComponent from './nav-component';
 import api from '../util/api';
 import { ReimburseComponent } from './all-reimbursements-component';
@@ -25,7 +24,6 @@ export class ReimbursementStatusComponent extends React.Component<any, any> {
     }
 
     async searchReimbursement() {
-        
         //headers with token
         const config = {
             headers: {
@@ -34,7 +32,7 @@ export class ReimbursementStatusComponent extends React.Component<any, any> {
             }
         }
 
-        let reimbursementID = await api.get(`/reimbursements/status/${this.state.inputValue}`, config)
+    let reimbursementID = await api.get(`/reimbursements/status/${this.state.inputValue}`, config)
         this.setState({
             reimbursements : reimbursementID.data
         })
@@ -47,7 +45,7 @@ export class ReimbursementStatusComponent extends React.Component<any, any> {
             });
 
             return (
-                <div className="reimbursements" >
+                <div className="reimbursements">
                     <NavComponent/>
                     <div>
                     <form>
@@ -61,17 +59,11 @@ export class ReimbursementStatusComponent extends React.Component<any, any> {
                             </div>
                         <button onClick={() => this.searchReimbursement()}>Submit</button>
                     </form>
-
-                    
                         <div id="user-display">
                         {reimbursementComponentList}    
                         </div>
-                    
+                    </div>
                 </div>
-                       
-                    
-                </div>
-                
             );
         }
 }
