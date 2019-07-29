@@ -51,14 +51,12 @@ export class ReimbursementIDComponent extends React.Component<any, any>{
                             <div className="input-field">
                                 <label htmlFor="username">User ID</label>
                                     <input type="text" 
-                                        
                                             placeholder="Reimbursement Status ID" 
                                             onChange= {(event) => this.handleReimbursementID(event)}>
                                     </input>
                                 </div> 
                                 <button onClick={() => this.searchReimbursement()}>Submit</button>
                     </form>   
-                    {this.state.inputValue}
                     {reimbursementComponentList}
                 </div>
                 
