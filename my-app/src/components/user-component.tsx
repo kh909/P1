@@ -81,8 +81,8 @@ export class UserComponent extends React.Component<any, User>{
                                         onChange= {(event) => this.handleUserID(event)}>
                                 </input>
                             </div>
-                        <button onClick={() => this.searchUser()}>Submit</button>
                     </form>
+                    <button onClick={() => this.searchUser()}>Submit</button>
 
                     {this.state.userid &&
                         <div id="user-display">

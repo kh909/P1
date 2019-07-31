@@ -49,16 +49,16 @@ export class ReimbursementStatusComponent extends React.Component<any, any> {
                     <NavComponent/>
                     <div>
                     <form>
-                        <h5>Display Reimbursement By Status</h5> 
+                        <h5>Display Reimbursement By Status ID</h5> 
                             <div className="input-field">
-                            <label htmlFor="username">Reimbursement Status ID</label>
+                            <label htmlFor="username">Status ID</label>
                                 <input type="text" 
                                         placeholder="Reimbursement Status ID" 
                                         onChange= {(event) => this.handleReimbursementID(event)}>
                                 </input>
                             </div>
-                        <button onClick={() => this.searchReimbursement()}>Submit</button>
                     </form>
+                    <button onClick={() => this.searchReimbursement()}>Submit</button>
                         <div id="user-display">
                         {reimbursementComponentList}    
                         </div>

@@ -93,3 +93,9 @@ nav {
   -moz-box-shadow: 1px -12px 28px -1px rgba(0, 0, 0, 0.87);
   box-shadow: 1px -12px 28px -1px rgba(0, 0, 0, 0.87);
 }
+
+label {
+  display: inline-block;
+  width: 140px;
+  text-align: right;
+}
