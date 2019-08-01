@@ -24,7 +24,8 @@ export class LoginComponent extends React.Component <any,any>{
         });
 
         const token = user.data.token
-
+        const userid = user.data.userid
+        
         console.log(token)
         console.log(user.data)
         //if the credentials are valid go to /users
@@ -33,6 +34,7 @@ export class LoginComponent extends React.Component <any,any>{
         if (user.data.sucess) {
             //stores token in localstorage
             localStorage.setItem("token",token)
+            localStorage.setItem("userid",userid)
             //takes user to user page
             this.props.history.replace("/main");
         } 

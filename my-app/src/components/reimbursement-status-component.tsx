@@ -11,7 +11,7 @@ export class ReimbursementStatusComponent extends React.Component<any, any> {
         
         this.state = {
             reimbursements: [],
-            inputValue: ''
+            inputValue: 1
         };
     }
 
@@ -47,22 +47,56 @@ export class ReimbursementStatusComponent extends React.Component<any, any> {
             return (
                 <div className="reimbursements">
                     <NavComponent/>
-                    <div>
+                    
                     <form>
-                        <h5>Display Reimbursement By Status ID</h5> 
-                            <div className="input-field">
-                            <label htmlFor="username">Status ID</label>
-                                <input type="text" 
-                                        placeholder="Reimbursement Status ID" 
-                                        onChange= {(event) => this.handleReimbursementID(event)}>
-                                </input>
+                        <h5>Display Reimbursement By Status</h5> 
+                        <div>
+                            <label>Status: </label>
+                                <select onChange={(e) => this.handleReimbursementID(e)} name="inputValue">
+                                    <option value="1">Pending</option>
+                                    <option value="2">Approved</option>
+                                    <option value="3">Deny</option>
+                                </select>
                             </div>
                     </form>
                     <button onClick={() => this.searchReimbursement()}>Submit</button>
-                        <div id="user-display">
-                        {reimbursementComponentList}    
-                        </div>
-                    </div>
+                        
+            
+            <table className="tables">
+                <thead>
+                    <tr>
+                        <th>Reimbursement ID</th>
+                        <th>Author</th>
+                        <th>Amount</th>
+                        <th>Date Submitted</th>
+                        <th>Date Resolved</th>
+                        <th>Resolver</th>
+                        <th>Status</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+            <tbody>
+                {
+                    this.state.reimbursements.map((Reimbursement: any) => {
+                        return(
+                <tr>
+                    <td>{Reimbursement.reimbursementid}</td>
+                    <td>{Reimbursement.author}</td>
+                    <td>{Reimbursement.amount}</td>
+                    <td>{Reimbursement.date_submitted}</td>
+                    <td>{Reimbursement.date_resolved}</td>
+                    <td>{Reimbursement.resolver}</td>
+                    <td>{Reimbursement.status}</td>
+                    <td>{Reimbursement.type}</td>
+                    <td>{Reimbursement.description}</td>
+                </tr>
+                )}
+                )}
+            </tbody>   
+            </table> 
+                        
+                    
                 </div>
             );
         }

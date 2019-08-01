@@ -84,18 +84,31 @@ export class UserComponent extends React.Component<any, User>{
                     </form>
                     <button onClick={() => this.searchUser()}>Submit</button>
 
-                    {this.state.userid &&
-                        <div id="user-display">
-                            
-                            <div> user id: {this.state.userid}</div>
-                            <div> username: {this.state.username}</div>
-                            <div> first name: {this.state.first_name}</div>
-                            <div> last name: {this.state.last_name}</div>
-                            <div> email: {this.state.email}</div>
-                            <div> role: {this.state.role}</div>
-                            
-                        </div>
-                    }
+                    
+
+                    <table className="tables">
+                        <thead>
+                            <tr>
+                                <th> User ID</th>
+                                <th> Username</th>
+                                <th> First Name</th>
+                                <th> Last Name</th>
+                                <th> Email</th>
+                                <th> Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{this.state.userid}</td>
+                                <td>{this.state.username}</td>
+                                <td>{this.state.first_name}</td>
+                                <td>{this.state.last_name}</td>
+                                <td>{this.state.email}</td>
+                                <td>{this.state.role}</td>
+                            </tr>
+                        </tbody>
+                    </table>    
+                    
                 </div>
             </div>    
                 

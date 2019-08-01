@@ -2,6 +2,7 @@ import * as React from 'react';
 import NavComponent from './nav-component';
 import api from '../util/api';
 import { PersonComponent } from './all-users-component';
+import { UsersUpdateComponent } from './users-update-component';
 
 export class UsersComponent extends React.Component<any, any>{
     constructor(props: any) {
@@ -48,7 +49,33 @@ export class UsersComponent extends React.Component<any, any>{
 
                 Display Users
                 </button>
-                    {userComponentList}
+                    <table className="tables">
+                        <thead>
+                            <tr>
+                                <th>ID </th>
+                                <th>Username</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        {
+                        this.state.users.map((User: any) => {
+                            return(
+                                <tr>
+                                    <td>{User.userid}</td>
+                                    <td>{User.username}</td>
+                                    <td>{User.first_name}</td>
+                                    <td>{User.last_name}</td>
+                                    <td>{User.email}</td>
+                                    <td>{User.role}</td>
+                                </tr>
+                            )}
+            )}
+                    </tbody>
+                    </table>    
                 </div>
                 
             );

@@ -38,7 +38,7 @@ export class UsersUpdateComponent extends React.Component<any, any>{
         }
             
         const body = {
-            userId: this.state.userid,
+            userid: this.state.userid,
             username: this.state.username,
             password: this.state.password,
             firstName: this.state.firstname,

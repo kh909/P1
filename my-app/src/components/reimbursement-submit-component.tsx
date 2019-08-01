@@ -8,12 +8,10 @@ export class ReimbursementSubmitComponent extends React.Component<any, any>{
         super(props);
         
         this.state = {
-            author: '',
+            author: localStorage.getItem("userid"),
             amount: '',
-            date_submitted: '',
-            date_resolved: '',
-            resolver: '',
-            status: '',
+            date_submitted: new Date(),
+            status: 1,
             type: '',
             description: ''
             
@@ -28,8 +26,7 @@ export class ReimbursementSubmitComponent extends React.Component<any, any>{
     }
 
     async submitReimbursements() {
-        const url = `http://localhost:3001/reimbursements`;
-
+    
         //the headers with the key
       
         const headers= {
@@ -42,8 +39,6 @@ export class ReimbursementSubmitComponent extends React.Component<any, any>{
             author: this.state.author,
             amount: this.state.amount,
             dateSubmitted: this.state.date_submitted,
-            dateResolved: this.state.date_resolved,
-            resolver: this.state.resolver,
             status: this.state.status,
             type: this.state.type,
             description: this.state.description
@@ -62,14 +57,10 @@ export class ReimbursementSubmitComponent extends React.Component<any, any>{
                 author: response.data.author,
                 amount: response.data.amount,
                 date_submitted: response.data.date_submitted,
-                date_resolved: response.data.date_resolved,
-                resolver: response.data.resolver,
                 status: response.data.status,
                 type: response.data.type,
                 description: response.data.description 
             })
-    
-        
     }
 
         render() {
@@ -79,46 +70,23 @@ export class ReimbursementSubmitComponent extends React.Component<any, any>{
                         <h2>Submit Reimbursements</h2>
                             <form>
                             <div> 
-                                <label>Author: </label>
-                                <input onChange={(e) => this.submitChange(e)} name="author"/>
-                            </div>
-                            <div> 
                                 <label>Amount: </label>
                                 <input onChange={(e) => this.submitChange(e)} name="amount"/>
-                            </div>
-                            <div> 
-                                <label>Date Submitted: </label>
-                                <input onChange={(e) => this.submitChange(e)} name="date_submitted"/>
-                            </div>
-                            <div> 
-                                <label>Date Resolved: </label>
-                                <input onChange={(e) => this.submitChange(e)} name="date_resolved"/>
-                            </div>
-                            <div> 
-                                <label>Resolver: </label>
-                                <input onChange={(e) => this.submitChange(e)} name="resolver"/>
-                            </div>
-                            <div> 
-                                <label>Status: </label>
-                                <input onChange={(e) => this.submitChange(e)} name="status"/>
-                            </div>
-                            <div> 
-                                <label>Type: </label>
-                                <input onChange={(e) => this.submitChange(e)} name="type"/>
                             </div>
                             <div> 
                                 <label>Description: </label>
                                 <input onChange={(e) => this.submitChange(e)} name="description"/>
                             </div>
                         
-                            <div>{this.state.author}</div>
-                            <div>{this.state.amount}</div>
-                            <div>{this.state.date_submitted}</div>
-                            <div>{this.state.date_resolved}</div>
-                            <div>{this.state.resolver}</div>
-                            <div>{this.state.status}</div>
-                            <div>{this.state.type}</div>
-                            <div>{this.state.description}</div>
+                            <div>
+                            <label>Type: </label>
+                                <select onChange={(e) => this.submitChange(e)} name="type">
+                                    <option value="1">Lodging</option>
+                                    <option value="2">Travel</option>
+                                    <option value="3">Food</option>
+                                    <option value="4">Other</option>
+                                </select>
+                            </div>
                             </form>
                             <button onClick={() => this.submitReimbursements()}>Submit</button>
                 </div>
