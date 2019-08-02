@@ -13,7 +13,8 @@ export class EmployeeSubmitComponent extends React.Component<any, any>{
             date_submitted: new Date(),
             status: 1,
             type: '',
-            description: ''
+            description: '',
+            created: false
             
         };
         this.submitChange= this.submitChange.bind(this);
@@ -58,7 +59,8 @@ export class EmployeeSubmitComponent extends React.Component<any, any>{
                  date_submitted: response.data.date_submitted,
                  status: response.data.status,
                  type: response.data.type,
-                 description: response.data.description 
+                 description: response.data.description,
+                 created: true 
              })
      }
      render() {
@@ -89,7 +91,8 @@ export class EmployeeSubmitComponent extends React.Component<any, any>{
                         </form>
                         <button onClick={() => this.submitReimbursements()}>Submit</button>
 
-                     
+                        {(this.state.created)&&
+                                <div>Created</div>}
             </div>
             
         );

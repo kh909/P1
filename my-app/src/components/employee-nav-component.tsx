@@ -11,7 +11,7 @@ const EmployeeNavComponent: React.FC = () => {
             <div className="users" >
                 <nav className="navbar navbar-toggleable-md navbar-expand-lg navbar-light bg-light display-front nav-pad">
                     <div className="navbar-header c-pointer shift-left">
-                        <Link to="/main" className="unset-anchor">
+                        <Link to="/employee" className="unset-anchor">
                             <img className="img-adjust-position rev-logo" src={RevLogo} alt="revature" />
                         </Link>
                     </div>

@@ -17,6 +17,7 @@ export class UsersUpdateComponent extends React.Component<any, any>{
             email: '',
             role: '',
             */
+           updated: false
         };
         this.submitChange= this.submitChange.bind(this);
     }
@@ -57,6 +58,11 @@ export class UsersUpdateComponent extends React.Component<any, any>{
        
             console.log(response)
 
+            this.setState({
+                ...this.state,
+                updated: true
+            })
+
     }
     
     render() {
@@ -95,6 +101,8 @@ export class UsersUpdateComponent extends React.Component<any, any>{
                             </div>
                     </form>
                     <button onClick={() => this.submitReimbursements()}>Submit</button>
+
+                    {(this.state.updated)&&<div>Updated</div>}
             </div>
             
         );

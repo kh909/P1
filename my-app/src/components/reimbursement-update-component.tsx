@@ -11,7 +11,8 @@ export class ReimbursementUpdateComponent extends React.Component<any, any>{
             reimbursementid: '',
             date_resolved: new Date(),
             resolver: localStorage.getItem("userid"),
-            status: ''
+            status: '',
+            created: false
             
         };
         this.submitChange= this.submitChange.bind(this);
@@ -45,6 +46,11 @@ export class ReimbursementUpdateComponent extends React.Component<any, any>{
            url: `http://localhost:3001/reimbursements`,
            headers: headers,
            data: body})
+
+           this.setState({
+               ...this.state,
+               created: true
+           })
        
             console.log(response)
             console.log(response.data)
@@ -72,6 +78,8 @@ export class ReimbursementUpdateComponent extends React.Component<any, any>{
                         </form>
                         
                         <button onClick={() => this.submitReimbursements()}>Submit</button>
+                        {(this.state.created)&&
+                                <div>Updated</div>}
                 </div>
             );
         }
