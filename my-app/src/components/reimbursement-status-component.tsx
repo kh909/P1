@@ -1,8 +1,6 @@
 import * as React from 'react';
 import NavComponent from './nav-component';
 import api from '../util/api';
-import { ReimburseComponent } from './all-reimbursements-component';
-
 
 export class ReimbursementStatusComponent extends React.Component<any, any> {
 
@@ -11,7 +9,7 @@ export class ReimbursementStatusComponent extends React.Component<any, any> {
         
         this.state = {
             reimbursements: [],
-            inputValue: 1
+            inputValue: ''
         };
     }
 
@@ -36,13 +34,8 @@ export class ReimbursementStatusComponent extends React.Component<any, any> {
         this.setState({
             reimbursements : reimbursementID.data
         })
-
-
     }
         render() {
-            const reimbursementComponentList = this.state.reimbursements.map((n: any) => {
-                return (<ReimburseComponent {...n}/>)
-            });
 
             return (
                 <div className="reimbursements">
@@ -51,8 +44,9 @@ export class ReimbursementStatusComponent extends React.Component<any, any> {
                     <form>
                         <h5>Display Reimbursement By Status</h5> 
                         <div>
-                            <label>Status: </label>
+                           
                                 <select onChange={(e) => this.handleReimbursementID(e)} name="inputValue">
+                                    <option value="" disabled selected>(Select Status)</option>
                                     <option value="1">Pending</option>
                                     <option value="2">Approved</option>
                                     <option value="3">Deny</option>
@@ -96,7 +90,6 @@ export class ReimbursementStatusComponent extends React.Component<any, any> {
             </tbody>   
             </table> 
                         
-                    
                 </div>
             );
         }

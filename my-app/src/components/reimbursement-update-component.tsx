@@ -2,9 +2,6 @@ import * as React from 'react';
 import NavComponent from './nav-component';
 import Axios from 'axios';
 
-
-
-
 export class ReimbursementUpdateComponent extends React.Component<any, any>{
 
     constructor(props: any) {
@@ -14,7 +11,7 @@ export class ReimbursementUpdateComponent extends React.Component<any, any>{
             reimbursementid: '',
             date_resolved: new Date(),
             resolver: localStorage.getItem("userid"),
-            status: '',
+            status: ''
             
         };
         this.submitChange= this.submitChange.bind(this);
@@ -33,7 +30,6 @@ export class ReimbursementUpdateComponent extends React.Component<any, any>{
         const headers= {
             "Authorization" : localStorage.getItem("token"),
             'Content-Type' : 'application/json'
-
         }
             
         const body = {
@@ -51,6 +47,7 @@ export class ReimbursementUpdateComponent extends React.Component<any, any>{
            data: body})
        
             console.log(response)
+            console.log(response.data)
     }
 
         render() {
@@ -66,18 +63,16 @@ export class ReimbursementUpdateComponent extends React.Component<any, any>{
                             <div>
                             <label>Status: </label>
                                 <select onChange={(e) => this.submitChange(e)} name="status">
+                                    <option value="" disabled selected>(Select)</option>
                                     <option value="1">Pending</option>
                                     <option value="2">Approved</option>
                                     <option value="3">Deny</option>
                                 </select>
                             </div>
-                            </form>
-                            <button onClick={() => this.submitReimbursements()}>Submit</button>
-                            <div className="App-views">
-                            
-                            </div>
-                            </div>
-                
+                        </form>
+                        
+                        <button onClick={() => this.submitReimbursements()}>Submit</button>
+                </div>
             );
         }
 }

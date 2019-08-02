@@ -10,7 +10,13 @@ import { HashRouter, Switch, Route } from 'react-router-dom';
 import { ReimbursementIDComponent} from './components/reimbursement-id-component';
 import { ReimbursementSubmitComponent} from './components/reimbursement-submit-component';
 import { ReimbursementUpdateComponent} from './components/reimbursement-update-component';
+import {EmployeeProfileComponent}  from './components/employee-profile-component';
+import {EmployeeSubmitComponent} from './components/employee-submit-component';
 import MainComponent from './components/main-component';
+import EmployeeMainComponent from './components/employee-main-component';
+import {EmployeeStatus} from './components/employee-status-component';
+
+
 
 const App: React.FC = () => {
   return (
@@ -21,6 +27,10 @@ const App: React.FC = () => {
           <Route path="/user" component= {UserComponent} />
           <Route path="/users" component= {UsersComponent} />
           <Route path="/main" component = {MainComponent} />
+          <Route path="/employee/submit" component = {EmployeeSubmitComponent} />
+          <Route path="/employee/profile" component = {EmployeeProfileComponent} />
+          <Route path="/employee/status" component = {EmployeeStatus}/>
+          <Route path="/employee" component = {EmployeeMainComponent} />
           <Route path="/reimbursements/status" component={ReimbursementStatusComponent} />
           <Route path="/reimbursements/author/userid/" component={ReimbursementIDComponent} />
           <Route path="/reimbursements/submit" component={ReimbursementSubmitComponent} />

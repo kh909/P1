@@ -1,8 +1,7 @@
 import * as React from 'react';
-import Axios from 'axios';
-import NavComponent from './nav-component';
-interface User {
-    
+import Axios from 'axios'
+import EmployeeNavComponent from './employee-nav-component';
+interface Employee {
     userid : string,
     username: string,
     first_name: string,
@@ -12,7 +11,7 @@ interface User {
     inputValue: string
 }
 
-export class UserComponent extends React.Component<any, User>{
+export class EmployeeProfileComponent extends React.Component<any, Employee>{
     constructor(props: any) {
         super(props);
         
@@ -27,9 +26,8 @@ export class UserComponent extends React.Component<any, User>{
             inputValue: ''
         };
     }
-
-    //sets the input from the input field
-    handleUserID(e: any) {
+     //sets the input from the input field
+     handleUserID(e: any) {
         const value = e.target.value;
         this.setState({
             ...this.state,
@@ -55,6 +53,7 @@ export class UserComponent extends React.Component<any, User>{
 
         
         Axios.get(url, config).then(payload => {
+            
             console.log(payload)
             console.log(payload.data.userid)
             this.setState({
@@ -67,17 +66,19 @@ export class UserComponent extends React.Component<any, User>{
                 role: payload.data[0].role, 
             })
             console.log(this.state)
+        }).catch(()=> {
+            alert("You can only search your own profile!!!")
         });
     }
 
         render() {
             return (
                 <div className="user" >
-                <NavComponent/> 
+                <EmployeeNavComponent/> 
 
             <div>
                     <form>
-                        <h5>Display User By ID</h5> 
+                        <h5>Please enter your ID</h5> 
                             <div className="input-field">
                             <label htmlFor="username">User ID</label>
                                 <input type="text" 
@@ -117,4 +118,3 @@ export class UserComponent extends React.Component<any, User>{
             );
         }
 }
-

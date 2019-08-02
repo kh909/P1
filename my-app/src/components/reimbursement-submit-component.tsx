@@ -32,7 +32,6 @@ export class ReimbursementSubmitComponent extends React.Component<any, any>{
         const headers= {
             "Authorization" : localStorage.getItem("token"),
             'Content-Type' : 'application/json'
-
         }
             
         const body = {
@@ -81,6 +80,7 @@ export class ReimbursementSubmitComponent extends React.Component<any, any>{
                             <div>
                             <label>Type: </label>
                                 <select onChange={(e) => this.submitChange(e)} name="type">
+                                    <option value="" disabled selected>(Select)</option>
                                     <option value="1">Lodging</option>
                                     <option value="2">Travel</option>
                                     <option value="3">Food</option>
@@ -89,6 +89,8 @@ export class ReimbursementSubmitComponent extends React.Component<any, any>{
                             </div>
                             </form>
                             <button onClick={() => this.submitReimbursements()}>Submit</button>
+
+                         
                 </div>
                 
             );

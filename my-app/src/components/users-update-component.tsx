@@ -8,6 +8,7 @@ export class UsersUpdateComponent extends React.Component<any, any>{
         super(props);
         
         this.state = {
+            /*
             userid: '',
             username: '',
             password: '',
@@ -15,7 +16,7 @@ export class UsersUpdateComponent extends React.Component<any, any>{
             lastname: '',
             email: '',
             role: '',
-            
+            */
         };
         this.submitChange= this.submitChange.bind(this);
     }
@@ -56,8 +57,6 @@ export class UsersUpdateComponent extends React.Component<any, any>{
        
             console.log(response)
 
-        
-    
     }
     
     render() {

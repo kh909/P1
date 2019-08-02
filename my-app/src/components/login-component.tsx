@@ -25,18 +25,31 @@ export class LoginComponent extends React.Component <any,any>{
 
         const token = user.data.token
         const userid = user.data.userid
+        const role = user.data.role
+        const name = user.data.username
+        const last = user.data.last
+
         
         console.log(token)
         console.log(user.data)
+        console.log(role)
         //if the credentials are valid go to /users
 
-        
+        //if credentials are valid
         if (user.data.sucess) {
             //stores token in localstorage
             localStorage.setItem("token",token)
             localStorage.setItem("userid",userid)
+            localStorage.setItem("role", user.data.role)
+            localStorage.setItem("username", user.data.username)
+            localStorage.setItem("last", user.data.last)
+            localStorage.setItem("email", user.data.email)
             //takes user to user page
-            this.props.history.replace("/main");
+            if (role ==3) {
+                this.props.history.replace("/employee");
+            } else if (role==1 || 2){
+                this.props.history.replace("/main");
+            } 
         } 
     }
     catch {

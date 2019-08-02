@@ -7,7 +7,6 @@ const MainComponent: React.FC = () => {
             <div>Welcome!</div>
         </div>
     );
-
 }
 
 export default MainComponent;

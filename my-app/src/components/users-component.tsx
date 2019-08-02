@@ -1,8 +1,7 @@
 import * as React from 'react';
 import NavComponent from './nav-component';
 import api from '../util/api';
-import { PersonComponent } from './all-users-component';
-import { UsersUpdateComponent } from './users-update-component';
+
 
 export class UsersComponent extends React.Component<any, any>{
     constructor(props: any) {
@@ -36,10 +35,6 @@ export class UsersComponent extends React.Component<any, any>{
 
     }
         render() {
-            
-            const userComponentList = this.state.users.map((n: any) => {
-                return (<PersonComponent {...n} />)
-            });
             
             return (
                 <div className="user">

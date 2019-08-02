@@ -1,27 +1,19 @@
 import * as React from 'react';
-import NavComponent from './nav-component';
+import EmployeeNavComponent from './employee-nav-component';
 import api from '../util/api';
 
-export class ReimbursementIDComponent extends React.Component<any, any>{
+export class EmployeeStatus extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-
-        this.state= {
-            reimbursements:[],
+        
+        this.state = {
+            reimbursements: [],
             inputValue: ''
         };
     }
 
-    handleReimbursementID(e: any) {
-        const value = e.target.value;
-        this.setState({
-            ...this.state, // copies all existing state properties
-            inputValue : value // overwrites the inputValue property
-        });
-    }
 
     async searchReimbursement() {
-        
         //headers with token
         const config = {
             headers: {
@@ -29,31 +21,29 @@ export class ReimbursementIDComponent extends React.Component<any, any>{
                 'Content-Type' : 'application/json'
             }
         }
-
-        let reimbursementID = await api.get(`/reimbursements/author/userid/${this.state.inputValue}`, config)
+        console.log(localStorage.getItem("userid"))
+        console.log(localStorage.getItem("token"))
+    let reimbursementID = await api.get(`/reimbursements/author/userid/${localStorage.getItem("userid")}`, config)
         this.setState({
             reimbursements : reimbursementID.data
         })
+
+        
     }
-    
         render() {
 
             return (
-                <div className="reimbursements" >
-                    <NavComponent/>
+                <div className="reimbursements">
+                    <EmployeeNavComponent/>
+                    
                     <form>
-                        <h2>Reimbursements By User ID</h2>
-                            <div className="input-field">
-                                <label htmlFor="username"></label>
-                                    <input type="text" 
-                                            placeholder="User ID" 
-                                            onChange= {(event) => this.handleReimbursementID(event)}>
-                                    </input>
-                            </div> 
-                    </form> 
-                    <button onClick={() => this.searchReimbursement()}>Submit</button>  
-    
-                    <table className="tables">
+                        <h5>Display Reimbursement By Status</h5> 
+                        
+                    </form>
+                    <button onClick={() => this.searchReimbursement()}>Submit</button>
+                        
+            
+            <table className="tables">
                 <thead>
                     <tr>
                         <th>Reimbursement ID</th>
@@ -85,7 +75,8 @@ export class ReimbursementIDComponent extends React.Component<any, any>{
                 )}
                 )}
             </tbody>   
-            </table>
+            </table> 
+                        
                 </div>
             );
         }
